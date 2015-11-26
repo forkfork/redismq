@@ -5,10 +5,10 @@ Simple Redis MQ
 * Producers don't know about consumers
 * Uses redis EVAL/EVALSHA feature
 
-Docs:
+Example:
 
 ```
-var redisMQ = require('./index');
+var redisMQ = require('redisMQ');
 
 // initialize redis connection
 redisMQ.initRedisClient();
@@ -24,6 +24,6 @@ redisMQ.join("aaa1", "bbb1", function(err, result) {
 
 TODO:
 
-* Unit tests
-* Performance tests
+* Not-singleton
+* Tests
 * Optional at-least-once delivery
