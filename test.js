@@ -1,14 +1,15 @@
+var redis = require('redis');
 var redisMQ = require('./index');
 
-redisMQ.initRedisClient();
+var queueConn = redisMQ.initRedisClient();
 
-redisMQ.say("aaa1", "hello");
+redisMQ.say(queueConn, "aaa1", "hello");
 
-redisMQ.join("aaa1", "bbb1", function(err, result) {
+redisMQ.join(queueConn, "aaa1", "bbb1", function(err, result) {
   console.log("read from queue: ", result);
 });
 
 setTimeout(function() {
-  redisMQ.leave("aaa1", "bbb1");
-  redisMQ.state.redisClient.quit()
+  redisMQ.leave(queueConn, "aaa1", "bbb1");
+  queueConn.redisClient.quit()
 }, 4000);
