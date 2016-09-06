@@ -24,6 +24,5 @@ redisMQ.join("aaa1", "bbb1", function(err, result) {
 
 TODO:
 
-* Not-singleton
 * Tests
 * Optional at-least-once delivery
